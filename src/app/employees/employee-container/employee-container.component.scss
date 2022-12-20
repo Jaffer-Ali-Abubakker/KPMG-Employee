@@ -1,0 +1,30 @@
+  
+table{
+    display: table;
+    margin: 0 auto;
+}
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .container {
+    width: 80%;
+    align-items: center;
+    margin-top: 150px;
+  }
+
+  th, td {
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+  }
+  td {
+    align-items: center
+  }
+  .example-button-container-icon{
+    padding: 10px;
+  }
+  .add-button{
+    margin-bottom: 10px;
+  }

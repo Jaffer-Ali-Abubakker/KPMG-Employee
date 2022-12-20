@@ -1,0 +1,58 @@
+{
+  "Employees": [
+    {
+      "id": "1",
+      "firstName": "Romin",
+      "lastName": "Irani",
+      "jobTitleName": "Developer",
+      "employeeCode": "E1",
+      "phoneNumber": "408-1234567",
+      "emailAddress": "romin.k.irani@gmail.com"
+    },
+    {
+      "id": "2",
+      "firstName": "Neil",
+      "lastName": "Irani",
+      "jobTitleName": "Developer",
+      "employeeCode": "E2",
+      "phoneNumber": "408-1111111",
+      "emailAddress": "neilrirani@gmail.com"
+    },
+    {
+      "id": "3",
+      "firstName": "Tom",
+      "lastName": "Hanks",
+      "jobTitleName": "Program Directory",
+      "employeeCode": "E3",
+      "phoneNumber": "408-2222222",
+      "emailAddress": "tomhanks@gmail.com"
+    },
+    {
+      "firstName": "fedaric",
+      "lastName": "Hanksen",
+      "jobTitleName": "Sr Developer",
+      "employeeCode": "E4",
+      "phoneNumber": "9942357278",
+      "emailAddress": "kavi@yopmai.co",
+      "id": "Jr0c0dR"
+    },
+    {
+      "id": "m6mXezz",
+      "firstName": "Tom Cruse",
+      "lastName": "battel",
+      "jobTitleName": "Manager",
+      "employeeCode": "E5",
+      "phoneNumber": "32423423",
+      "emailAddress": "cruse@gmail.com"
+    },
+    {
+      "id": "uSaXN-x",
+      "firstName": "David",
+      "lastName": "Beckham",
+      "jobTitleName": "Team Lead",
+      "employeeCode": "E7",
+      "phoneNumber": "444-777-888",
+      "emailAddress": "Beckham@gmail.com"
+    }
+  ]
+}

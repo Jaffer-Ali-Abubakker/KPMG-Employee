@@ -1,0 +1,66 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>{{HeaderName}}</mat-card-title>
+        </mat-card-header>
+        <form class="example-form" [formGroup]="EmployeeList">
+            <mat-card-content>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>First Name</mat-label>
+                            <input matInput placeholder="Placeholder" formControlName="firstName">
+                        </mat-form-field>
+                    </div>
+                    <div class="col" hidden>
+                        <mat-form-field appearance="outline">
+                            <input matInput formControlName="id">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput placeholder="Placeholder" formControlName="lastName">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Job Title Name</mat-label>
+                            <input matInput placeholder="Placeholder" formControlName="jobTitleName">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Employee Code</mat-label>
+                            <input matInput placeholder="Placeholder" formControlName="employeeCode">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Phone Number</mat-label>
+                            <input matInput placeholder="Placeholder" formControlName="phoneNumber">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Placeholder" formControlName="emailAddress">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                   <div class="col" *ngIf="dialogData == null">
+                    <button mat-stroked-button color="accent" class="btn-block" (click)="Save(EmployeeList.value)">Save</button>
+                   </div>
+                   <div class="col" *ngIf="dialogData">
+                    <button mat-stroked-button color="accent" class="btn-block" (click)="UpdateEmployee(EmployeeList.value.id,EmployeeList.value)">Update</button>
+                   </div>
+                </div>
+            </mat-card-content>
+        </form>
+    </mat-card>
+</div>
