@@ -5,6 +5,9 @@ import { tap } from 'rxjs';
 import { EmployeeServiceService } from '../services/employee-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { DataUpdateServiceService } from "../services/data-update-service.service";
+import { EditConfirmationAlert } from "../sweet-alert-messages";
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'kpmg-employees-employee-form',
   templateUrl: './employee-form.component.html',
@@ -77,11 +80,17 @@ export class EmployeeFormComponent implements OnInit {
     }
   }
   UpdateEmployee<Type>(id: any ,event:Type){
-    this.EmployeeService.EditEmployee(id,event).pipe(tap(() =>{
-      this.dialogRef.close()
-      this.DataUpdateServiceService.updateData()
-      this.toastr.success('The Employee Details Updated','Updated')
-    })).subscribe()
-    
+    EditConfirmationAlert().then((result) =>{
+      if(result.isConfirmed){
+        this.EmployeeService.EditEmployee(id,event).pipe(tap(() =>{
+          this.dialogRef.close()
+          this.DataUpdateServiceService.updateData()
+          this.toastr.success('The Employee Details Updated','Updated')
+        })).subscribe()
+        Swal.fire('Saved!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
   }
 }

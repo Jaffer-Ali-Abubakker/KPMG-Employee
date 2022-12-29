@@ -6,6 +6,7 @@ import { EmployeeFormComponent } from '../employee-form/employee-form.component'
 import { tap } from 'rxjs';
 import { DataUpdateServiceService } from "../services/data-update-service.service";
 import { ToastrService } from 'ngx-toastr';
+import { deleteConfirmationAlert } from "../sweet-alert-messages";
 
 
 
@@ -44,10 +45,13 @@ export class EmployeeBaseComponent implements OnInit {
   }
 
   DeleteEmployee<Type>(id: Type) {
-    this.EmployeeService.DeleteEmployeeData(id).pipe(tap((res) => {
-      this.toastr.warning('','DELETED')
-      this.ngOnInit()
-    })).subscribe()
+    deleteConfirmationAlert().then((result) => {
+      if (result.value) {
+        this.EmployeeService.DeleteEmployeeData(id).pipe(tap((res) => {
+          this.toastr.warning('', 'DELETED')
+          this.ngOnInit()
+        })).subscribe()
+      }
+    })
   }
-
 }
