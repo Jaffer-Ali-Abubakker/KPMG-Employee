@@ -10,6 +10,7 @@
                         <mat-form-field appearance="outline">
                             <mat-label>First Name</mat-label>
                             <input matInput placeholder="Placeholder" formControlName="firstName">
+                            <mat-hint *ngIf="EmployeeList.get('firstName')?.invalid && EmployeeList.get('firstName')?.touched">First Name is required</mat-hint>
                         </mat-form-field>
                     </div>
                     <div class="col" hidden>
@@ -21,6 +22,7 @@
                         <mat-form-field appearance="outline">
                             <mat-label>Last Name</mat-label>
                             <input matInput placeholder="Placeholder" formControlName="lastName">
+                            <mat-hint *ngIf="EmployeeList.get('lastName')?.invalid && EmployeeList.get('lastName')?.touched">Last Name is required</mat-hint>
                         </mat-form-field>
                     </div>
                 </div>
@@ -29,12 +31,14 @@
                         <mat-form-field appearance="outline">
                             <mat-label>Job Title Name</mat-label>
                             <input matInput placeholder="Placeholder" formControlName="jobTitleName">
+                            <mat-hint *ngIf="EmployeeList.get('jobTitleName')?.invalid && EmployeeList.get('jobTitleName')?.touched">jobTitleName Is Empthy</mat-hint>
                         </mat-form-field>
                     </div>
                     <div class="col">
                         <mat-form-field appearance="outline">
                             <mat-label>Employee Code</mat-label>
                             <input matInput placeholder="Placeholder" formControlName="employeeCode">
+                            <mat-hint *ngIf="EmployeeList.get('employeeCode')?.invalid && EmployeeList.get('employeeCode')?.touched">employeeCode Not found</mat-hint>
                         </mat-form-field>
                     </div>
                 </div>
@@ -43,12 +47,14 @@
                         <mat-form-field appearance="outline">
                             <mat-label>Phone Number</mat-label>
                             <input matInput placeholder="Placeholder" formControlName="phoneNumber">
+                            <mat-hint *ngIf="EmployeeList.get('phoneNumber')?.invalid && EmployeeList.get('phoneNumber')?.touched">where is Phone Number</mat-hint>
                         </mat-form-field>
                     </div>
                     <div class="col">
                         <mat-form-field appearance="outline">
                             <mat-label>Email</mat-label>
                             <input matInput placeholder="Placeholder" formControlName="emailAddress">
+                            <mat-hint *ngIf="EmployeeList.get('emailAddress')?.invalid && EmployeeList.get('emailAddress')?.touched">Email must</mat-hint>
                         </mat-form-field>
                     </div>
                 </div>
