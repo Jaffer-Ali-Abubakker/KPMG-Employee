@@ -4,6 +4,9 @@ import { EmployeeServiceService } from '../services/employee-service.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 import { tap } from 'rxjs';
+import { DataUpdateServiceService } from "../services/data-update-service.service";
+import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -14,13 +17,19 @@ import { tap } from 'rxjs';
 export class EmployeeBaseComponent implements OnInit {
 
   EmployeeDetails: Employees[] = []
-
-  constructor(private EmployeeService: EmployeeServiceService, public dialog: MatDialog) { }
+  constructor(private EmployeeService: EmployeeServiceService,
+    public dialog: MatDialog,
+    private DataUpdateServiceService: DataUpdateServiceService,
+    private toastr: ToastrService,
+  ) { }
 
   ngOnInit(): void {
     this.EmployeeService.getEmployeeDetails().subscribe((res => {
       this.EmployeeDetails = res
     }))
+    this.DataUpdateServiceService.dataUpdate$.subscribe(() => {
+      this.ngOnInit()
+    })
   }
 
   OpenAddBox() {
@@ -34,10 +43,11 @@ export class EmployeeBaseComponent implements OnInit {
     })
   }
 
-  DeleteEmployee<Type>(id: Type){
-     this.EmployeeService.DeleteEmployeeData(id).pipe(tap((res) =>{
-        
-     })).subscribe()
-     location.reload()
+  DeleteEmployee<Type>(id: Type) {
+    this.EmployeeService.DeleteEmployeeData(id).pipe(tap((res) => {
+      this.toastr.warning('','DELETED')
+      this.ngOnInit()
+    })).subscribe()
   }
+
 }

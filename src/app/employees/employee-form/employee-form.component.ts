@@ -1,9 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {  MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { tap } from 'rxjs';
 import { EmployeeServiceService } from '../services/employee-service.service';
-
+import { ToastrService } from 'ngx-toastr';
+import { DataUpdateServiceService } from "../services/data-update-service.service";
 @Component({
   selector: 'kpmg-employees-employee-form',
   templateUrl: './employee-form.component.html',
@@ -13,8 +14,11 @@ export class EmployeeFormComponent implements OnInit {
   EmployeeList!: FormGroup
   HeaderName: string = '';
   isChange: boolean = true
+  @Output() reloadEvent = new EventEmitter<void>();
   constructor(
     private formBuilder: FormBuilder,
+    private toastr: ToastrService,
+    private DataUpdateServiceService:DataUpdateServiceService,
     private EmployeeService: EmployeeServiceService,
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
     public dialogRef: MatDialogRef<EmployeeFormComponent>
@@ -32,8 +36,9 @@ export class EmployeeFormComponent implements OnInit {
     }
     this.EmployeeService.AddEmployeeData(event).subscribe((Response => {
       this.dialogRef.close()
+      this.toastr.success('New Employee is Added','Success')
+      this.DataUpdateServiceService.updateData()
     }))
-    location.reload()
   }
 
   FormDetails() {
@@ -74,11 +79,9 @@ export class EmployeeFormComponent implements OnInit {
   UpdateEmployee<Type>(id: any ,event:Type){
     this.EmployeeService.EditEmployee(id,event).pipe(tap(() =>{
       this.dialogRef.close()
+      this.DataUpdateServiceService.updateData()
+      this.toastr.success('The Employee Details Updated','Updated')
     })).subscribe()
-    location.reload()
-  }
-  checkChanges(){
-    this.isChange = false;
-
+    
   }
 }

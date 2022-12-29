@@ -11,6 +11,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import {MatCardModule} from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatCardModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    BrowserModule
   ],
   exports: [EmployeeBaseComponent, EmployeeContainerComponent],
 })
